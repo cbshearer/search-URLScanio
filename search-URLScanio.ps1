@@ -9,7 +9,7 @@ $URLScanIOapikey = $URLScanIOapikey.data
 
 ## Enter your array of sites to scan here
     $URLList = @()
-    $URLList += "resources-bobscottsinsights.com/"
+    $URLList += "microsoft.com"
     $URLList += "google.com"
     $URLList += "facebook.com"
     $URLList += "amazon.com"
