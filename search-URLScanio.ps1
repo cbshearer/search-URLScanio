@@ -37,7 +37,7 @@ foreach ($url in $URLList)
                     try { $ioResult = Invoke-WebRequest -Uri $URLScanIOURI -Method Get -ContentType application/json -ErrorAction SilentlyContinue }
                     catch {}
                 }
-            while (!($ioResult))
+            while ((!($ioResult)) -or ($ioresult.message -like 'notdone'))
 
             $ioResult = $ioResult | ConvertFrom-Json
 
