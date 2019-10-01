@@ -33,13 +33,12 @@ foreach ($url in $URLList)
         ## Check every 10 seconds to see if the results are ready. 
             do  {
                     Start-Sleep 10
-                    Write-Host "     ZZZzzz..."
-                    try { $ioResult = Invoke-WebRequest -Uri $URLScanIOURI -Method Get -ContentType application/json -ErrorAction SilentlyContinue }
+                    Write-Host "     ZZZzzz..." 
+                    try { $ioResult = Invoke-WebRequest -Uri $URLScanIOURI -Method Get -ContentType application/json -ErrorAction SilentlyContinue
+                          $ioResult = $ioResult | ConvertFrom-Json }
                     catch {}
                 }
-            while ((!($ioResult)) -or ($ioresult.message -like 'notdone'))
-
-            $ioResult = $ioResult | ConvertFrom-Json
+            while ((!($ioResult)) -or ($ioresult.message -eq 'notdone') -or ($ioresult.message -like 'not found'))
 
         ## Display score with red if over 80, else green
             if ($ioResult.verdicts.overall.score -ge 80)  
