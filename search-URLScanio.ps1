@@ -14,6 +14,9 @@ $URLScanIOapikey = $URLScanIOapikey.data
     $URLList += "facebook.com"
     $URLList += "amazon.com"
 
+## Alternatively, you can pull many sites from a file
+    #$URLList = Get-Content "E:\temp\THREAT_LIST.txt"
+
 ## Set TLS 1.2
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
