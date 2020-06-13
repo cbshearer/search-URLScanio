@@ -9,6 +9,7 @@
   - Sign in and Add / show an API key
   - Enter your API key on line 7 as the variable $URLScanIOapikey
 - Line 9: URLs should be loaded into the array, replacing the samples
+- Line 16: If it is easier, you can uncomment line 16 and enter the path to a file of URLs you would like to scan; 1 URL per line in the file.
 
 ## The following information is returned on the screen: 
 - URL Being submitted
