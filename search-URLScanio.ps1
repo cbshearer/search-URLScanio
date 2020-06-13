@@ -3,16 +3,14 @@
 ## 8.21.2019
 ## URLScan.io API docs: https://urlscan.io/about-api/
 
-$CredFile        = import-csv 'E:\scripts\powershell\submit-URLScanIO\credentials.csv'
-$URLScanIOapikey = $CredFile | Where-Object -Property Type -eq 'URLScanIOapiKey'
-$URLScanIOapikey = $URLScanIOapikey.data
+## Create an account on https://urlscan.io/user/signup
+    $URLScanIOapikey = "xxxxxxxx"
 
 ## Enter your array of sites to scan here
-    $URLList = @()
-    $URLList += "microsoft.com"
-    $URLList += "google.com"
-    $URLList += "facebook.com"
-    $URLList += "amazon.com"
+    $URLList = @("microsoft.com",
+                 "google.com",
+                 "facebook.com",
+                 "amazon.com")
 
 ## Alternatively, you can pull many sites from a file
     #$URLList = Get-Content "E:\temp\THREAT_LIST.txt"
@@ -45,9 +43,9 @@ foreach ($url in $URLList)
 
         ## Display score with red if over 80, else green
             if ($ioResult.verdicts.overall.score -ge 80)  
-                {Write-Host "Score (1-100) : " -nonewline; Write-Host -f Red   $ioResult.verdicts.overall.score}
+                {Write-Host "Score (0-100) : " -nonewline; Write-Host -f Red   $ioResult.verdicts.overall.score}
             else                                        
-                {Write-Host "Score (1-100) : " -nonewline; Write-Host -f green $ioResult.verdicts.overall.score}
+                {Write-Host "Score (0-100) : " -nonewline; Write-Host -f green $ioResult.verdicts.overall.score}
         
         ## Display verdict in red if malicious, else green
             if ($ioResult.verdicts.overall.malicious -like 'TRUE')
