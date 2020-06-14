@@ -13,6 +13,7 @@
 
 ## To use from CLI:
 - -u: URL
+- Example:
 ```
 .\search-URLScanio -u https://example.com/super/fun
 ```
