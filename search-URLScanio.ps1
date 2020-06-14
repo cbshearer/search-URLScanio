@@ -11,6 +11,7 @@
 
 ## Assign variables if they were entered from the CLI
     if ($u){$urllist = @($u)}
+    
 ## If variable wasn't passed from the CLI, then see if they were entered into script directly or pulled from a list
     else {
         ## Enter your array of sites to scan here
