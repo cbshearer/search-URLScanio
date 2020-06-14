@@ -3,17 +3,24 @@
 ## 8.21.2019
 ## URLScan.io API docs: https://urlscan.io/about-api/
 
+## Accept CLI parameters
+    param ($u)
+
 ## Create an account on https://urlscan.io/user/signup
     $URLScanIOapikey = "xxxxxxxx"
 
-## Enter your array of sites to scan here
-    $URLList = @("microsoft.com",
-                 "google.com",
-                 "facebook.com",
-                 "amazon.com")
+## Assign variables if they were entered from the CLI
+    if ($u){$urllist = @($u)}
+    else {
+        ## Enter your array of sites to scan here
+            $URLList = @("microsoft.com",
+                         "google.com",
+                         "facebook.com",
+                         "amazon.com")
 
-## Alternatively, you can pull many sites from a file
-    #$URLList = Get-Content "E:\temp\THREAT_LIST.txt"
+        ## Alternatively, you can pull many sites from a file
+            #$URLList = Get-Content "E:\temp\THREAT_LIST.txt"
+    }
 
 ## Set TLS 1.2
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
