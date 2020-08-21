@@ -17,13 +17,20 @@ Function search-urlscanio {
     ## Assign variables if they were entered from the CLI
         if ($u){$urllist = @($u)}
         
-    ## If variable not provided we are done here.
-        else {}
+    ## If variable wasn't passed from the CLI, then see if they were entered into script directly or pulled from a list
+        else {
+            ## Enter your array of sites to scan here, separated by commas
+                #$URLList = @("amazon.com","bing.com","contoso.com")
+                $URLList = @()
+    
+            ## Alternatively, you can pull many sites from a file
+                #$URLList = Get-Content "E:\temp\THREAT_LIST.txt"
+        }
     
     ## Set TLS 1.2
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     
-    ## Display the number of URLs identified
+    ## Count
         Write-Host "======================="
         Write-host "    URLs to scan:" $URLList.count 
         
@@ -39,9 +46,8 @@ Function search-urlscanio {
             ## Results
                 $ioResult     = $null     ## Null out the variable
                 $URLScanIOURI = "https://urlscan.io/api/v1/result/" + $content.uuid + '/'
-                $URLScanIOURL = "https://urlscan.io/result/" + $content.uuid + '/'
-                Write-Host "Result URL:" $URLScanIOURL
-
+                Write-Host "Result URI:" $URLScanIOURI
+                
             ## Check every 10 seconds to see if the results are ready. 
                 do  {
                         Start-Sleep 10
