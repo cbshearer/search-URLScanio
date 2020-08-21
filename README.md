@@ -9,7 +9,7 @@
 - Import the module
 
 ```PowerShell
-PS C:\temp> Import-Module .\search-URLScanio
+PS C:\temp> Import-Module .\search-URLScanio.psm1
 ```
 
 - Change parameters on line 15
